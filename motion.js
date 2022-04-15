@@ -47,7 +47,6 @@ $(document).ready(function() {
 })
 
 function move(e) {
-  console.log("index move");
   if (e.altKey) {
     x = e.pageX - center_x
     y = e.pageY - center_y
