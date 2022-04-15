@@ -54,6 +54,10 @@ body {
 }
 
 /* drone up down */
+#div-monocopter {
+  position: relative;
+  /* visibility: hidden; */
+}
 
 .tube {
   position: absolute;
@@ -78,6 +82,10 @@ body {
 }
 
 /* angular rotation */
+#div-gyro {
+  position: relative;
+  /* visibility: hidden; */
+}
 
 .hbar {
   position: absolute;
