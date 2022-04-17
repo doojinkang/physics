@@ -13,12 +13,14 @@ body {
   margin-left:10px;
   margin-right:20px;
   margin-bottom:10px;
-  border: 10px solid yellow;
+  border: 2px solid green;
   width:1090px;
   height:440px;
 }
 
+/* Drawing Area */
 #div-draw {
+  /* visibility: hidden; */
   position: absolute;
   /* top:20px; */
   /* left:30px; */
@@ -37,12 +39,13 @@ body {
   cursor: pointer;
 }
 
-#toolbar {
+#div-drawing-toolbar {
   position: absolute;
-  top:470px;
-  left:30px;
+  top:450px;
+  left:500px;
 }
 
+/* Move Area */
 #div-motion {
   position: absolute;
   /* top:20px; */
@@ -51,6 +54,12 @@ body {
   height: 440px;
   /* background: #000000; */
   /* background-image: url("./blackboard.jpg"); */
+}
+
+#div-motion-toolbar {
+  position: absolute;
+  top:450px;
+  left:100px;
 }
 
 /* drone up down */
@@ -128,10 +137,19 @@ body {
   backface-visibility: hidden;
 }
 
-.angle_bar {
+.angle-bar {
   position: absolute;
   /* width: 200px; */
   height: 2px;
   margin: -1px 0 0 -1px;
   background: #FFFFFF;
 }
+
+.toolbar-button {
+  background-color: yellow;
+}
+
+.toolbar-text {
+  color: white;
+}
+
