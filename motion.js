@@ -38,29 +38,29 @@
   $angle.css( {'left': angle_x + 'px', 'top': angle_y + 'px'})
   $a_bar.css( {'width': angle_radius + 'px', 'left': center_x + 'px', 'top': center_y + 'px'})
 
-function move(e) {
-  if (e.altKey || gyro_check.checked) {
-    x = e.pageX - center_x
-    y = e.pageY - center_y
-    theta = Math.atan2(y, x)
-    // console.log(theta)
-    x = Math.cos(theta) * (- angle_radius) + center_x
-    y = Math.sin(theta) * (- angle_radius) + center_y
-    $angle.css( {'left': x + 'px', 'top': y + 'px'})
-    // $hbar.css(  {'left': center_x + 'px', 'top': center_y + 'px'})
-    $a_bar.css( { 'left': center_x - angle_radius / 2 * Math.cos(theta) - angle_radius / 2 + 'px',
-                      'top': center_y - angle_radius / 2 * Math.sin(theta) + 'px',
-                      'transform': 'rotate(' + theta * 180 / Math.PI + 'deg)'
-                    } )
+  function move(e) {
+    if (e.altKey || gyro_check.checked) {
+      x = e.pageX - center_x
+      y = e.pageY - center_y
+      theta = Math.atan2(y, x)
+      // console.log(theta)
+      x = Math.cos(theta) * (- angle_radius) + center_x
+      y = Math.sin(theta) * (- angle_radius) + center_y
+      $angle.css( {'left': x + 'px', 'top': y + 'px'})
+      // $hbar.css(  {'left': center_x + 'px', 'top': center_y + 'px'})
+      $a_bar.css( { 'left': center_x - angle_radius / 2 * Math.cos(theta) - angle_radius / 2 + 'px',
+                        'top': center_y - angle_radius / 2 * Math.sin(theta) + 'px',
+                        'transform': 'rotate(' + theta * 180 / Math.PI + 'deg)'
+                      } )
+    }
+
+    if (e.shiftKey || copter_check.checked) {
+      y = e.pageY
+      if ( y > line_max_y ) y = line_max_y
+      if ( y < line_min_y ) y = line_min_y
+      $line.css( {'top': y + 'px'})
+    }
   }
 
-  if (e.shiftKey || copter_check.checked) {
-    y = e.pageY
-    if ( y > line_max_y ) y = line_max_y
-    if ( y < line_min_y ) y = line_min_y
-    $line.css( {'top': y + 'px'})
-  }
-}
-
-$(window).on('mousemove', move);
+  $(window).on('mousemove', move);
 })();
