@@ -34,15 +34,11 @@ body {
         }
 
     .div-gyro { position: relative; }
-        #circle { position: absolute; border: #888888 2px dashed; border-radius: 50%; }
-        #hbar   { position: absolute; height: 2px; margin: -1px 0 0 -1px; background: #888888; }
-        #center { position: absolute; width: 2px; height: 2px; margin: -1px 0 0 -1px; background: #888888;
-          border-radius: 50%;
-        }
-        #angle { position: absolute; width: 30px; height: 30px; margin: -15px 0 0 -15px; background: #FFFFFF;
-          border-radius: 50%;
-        }
-        #angle-bar { position: absolute; height: 2px; margin: -1px 0 0 -1px; background: #FFFFFF; }
+        #circle { position: absolute; border: #888888 2px dotted; border-radius: 50%; }
+        #hbar   { position: absolute; height: 2px; margin: -1px 0 -1px 0; background: #888888; }
+        #rotate-target { position: absolute; }
+          #angle { position: absolute; background: #FFFFFF; border-radius: 50%; }
+          #angle-bar { position: absolute; background: #FFFFFF; }
 
 /* --------- Toolbar ------------ */
 .toolbar { position: absolute; top:450px; }
