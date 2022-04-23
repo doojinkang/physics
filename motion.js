@@ -5,14 +5,14 @@
 
   var tube_x = x_pos;
   var tube_y = y_pos;
-  var $tube = $('.tube');
+  var div_tube = document.getElementById('tube');
   var line_x = 55 + x_pos;
   var line_max_y = y_pos + 400;
   var line_min_y = y_pos + 60;
-  var $line = $('.line');
+  var div_line = document.getElementById('line');
 
-  $tube.css(  {'left': tube_x + 'px', 'top': tube_y + 'px'})
-  $line.css(  {'left': line_x + 'px', 'top': line_max_y + 'px'})
+  Object.assign(div_tube.style, {'left': tube_x + 'px', 'top': tube_y + 'px'});
+  Object.assign(div_line.style, {'left': line_x + 'px', 'top': line_max_y + 'px'});
 
   var center_x = 600;
   var center_y = 200;
@@ -20,23 +20,23 @@
 
   var angle_x = center_x + angle_radius;
   var angle_y = center_y;
-  var $circle = $('.circle')
-  var $center = $('.center')
-  var $hbar = $('.hbar')
-  var $angle = $('.angle')
-  var $a_bar = $('.angle_bar')
+  var div_circle = document.getElementById('circle')
+  var div_center = document.getElementById('center')
+  var div_hbar = document.getElementById('hbar')
+  var div_angle = document.getElementById('angle')
+  var div_angle_bar = document.getElementById('angle-bar')
 
   var copter_check = document.getElementById("copter-check");
   var gyro_check   = document.getElementById("gyro-check");
 
-  $circle.css({'width': angle_radius * 2 + 'px', 'height': angle_radius * 2 + 'px',
+  Object.assign(div_circle.style, {'width': angle_radius * 2 + 'px', 'height': angle_radius * 2 + 'px',
                'left': center_x + 'px', 'top': center_y + 'px',
                'margin': + (angle_radius * -1) + 'px 0 0 ' + (angle_radius * -1) + 'px'
               })
-  $hbar.css(  {'width': angle_radius + 'px', 'left': center_x + 'px', 'top': center_y + 'px'})
-  $center.css({'left': center_x + 'px', 'top': center_y + 'px'})
-  $angle.css( {'left': angle_x + 'px', 'top': angle_y + 'px'})
-  $a_bar.css( {'width': angle_radius + 'px', 'left': center_x + 'px', 'top': center_y + 'px'})
+  Object.assign(div_hbar.style, {'width': angle_radius + 'px', 'left': center_x + 'px', 'top': center_y + 'px'})
+  Object.assign(div_center.style, {'left': center_x + 'px', 'top': center_y + 'px'})
+  Object.assign(div_angle.style, {'left': angle_x + 'px', 'top': angle_y + 'px'})
+  Object.assign(div_angle_bar.style, {'width': angle_radius + 'px', 'left': center_x + 'px', 'top': center_y + 'px'})
 
   function move(e) {
     if (e.altKey || gyro_check.checked) {
@@ -46,9 +46,8 @@
       // console.log(theta)
       x = Math.cos(theta) * (- angle_radius) + center_x
       y = Math.sin(theta) * (- angle_radius) + center_y
-      $angle.css( {'left': x + 'px', 'top': y + 'px'})
-      // $hbar.css(  {'left': center_x + 'px', 'top': center_y + 'px'})
-      $a_bar.css( { 'left': center_x - angle_radius / 2 * Math.cos(theta) - angle_radius / 2 + 'px',
+      Object.assign(div_angle.style, {'left': x + 'px', 'top': y + 'px'})
+      Object.assign(div_angle_bar.style, { 'left': center_x - angle_radius / 2 * Math.cos(theta) - angle_radius / 2 + 'px',
                         'top': center_y - angle_radius / 2 * Math.sin(theta) + 'px',
                         'transform': 'rotate(' + theta * 180 / Math.PI + 'deg)'
                       } )
@@ -58,9 +57,9 @@
       y = e.pageY
       if ( y > line_max_y ) y = line_max_y
       if ( y < line_min_y ) y = line_min_y
-      $line.css( {'top': y + 'px'})
+      Object.assign(div_line.style, {'top': y + 'px'})
     }
   }
 
-  $(window).on('mousemove', move);
+  window.addEventListener('mousemove', move);
 })();
