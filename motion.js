@@ -6,13 +6,13 @@
   var tube_x = x_pos;
   var tube_y = y_pos;
   var div_tube = document.getElementById('tube');
-  var line_x = 55 + x_pos;
-  var line_max_y = y_pos + 400;
-  var line_min_y = y_pos + 60;
-  var div_line = document.getElementById('line');
+  var copter_x = 55 + x_pos;
+  var copter_max_y = y_pos + 400;
+  var copter_min_y = y_pos + 60;
+  var div_copter = document.getElementById('copter');
 
   Object.assign(div_tube.style, {'left': tube_x + 'px', 'top': tube_y + 'px'});
-  Object.assign(div_line.style, {'left': line_x + 'px', 'top': line_max_y + 'px'});
+  Object.assign(div_copter.style, {'left': copter_x + 'px', 'top': copter_max_y + 'px'});
 
   var center_x = 600;
   var center_y = 200;
@@ -55,9 +55,9 @@
 
     if (e.shiftKey || copter_check.checked) {
       y = e.pageY
-      if ( y > line_max_y ) y = line_max_y
-      if ( y < line_min_y ) y = line_min_y
-      Object.assign(div_line.style, {'top': y + 'px'})
+      if ( y > copter_max_y ) y = copter_max_y
+      if ( y < copter_min_y ) y = copter_min_y
+      Object.assign(div_copter.style, {'top': y + 'px'})
     }
   }
 
