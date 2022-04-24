@@ -26,8 +26,9 @@
   var div_angle = document.getElementById('angle')
   var div_angle_bar = document.getElementById('angle-bar')
 
-  var copter_check = document.getElementById("copter-check");
-  var gyro_check   = document.getElementById("gyro-check");
+  var copter_check = document.getElementById('copter-check')
+  var gyro_check   = document.getElementById('gyro-check')
+  var draw_check   = document.getElementById('draw-check')
 
   Object.assign(div_circle.style, {
     width: angle_radius * 2, height: angle_radius * 2,
@@ -54,21 +55,86 @@
     margin: (angle_bar_height / -2) + ' 0 ' + (angle_bar_height / 2) + ' 0 ',
   })
 
-  function move(e) {
-    if (e.altKey || gyro_check.checked) {
-      x = e.pageX - center_x
-      y = e.pageY - center_y
-      theta = Math.atan2(y, x)
-      Object.assign(div_rotate_target.style, { transform: 'rotate(' + theta * 180 / Math.PI + 'deg)' } )
+  var div_motion = document.getElementById('div-motion')
+  var div_monocopter = document.getElementById('div-monocopter')
+  var div_gyro = document.getElementById('div-gyro')
+
+  copter_check.addEventListener('click', () => {
+    // console.log('click', copter_check.checked)
+    if (copter_check.checked) {
+      gyro_check.checked = false;
+      draw_check.checked = false;
+      Object.assign(div_monocopter.style, {visibility: 'visible'});
+      enableMotion && enableMotion();
+      disableDraw && disableDraw();
+    }
+    else {
+      Object.assign(div_monocopter.style, {visibility: 'hidden'});
+    }
+  })
+  gyro_check.addEventListener('click', () => {
+    // console.log('click', gyro_check.checked)
+    if (gyro_check.checked) {
+      copter_check.checked = false;
+      draw_check.checked = false;
+      Object.assign(div_gyro.style, {visibility: 'visible'});
+      enableMotion && enableMotion();
+      disableDraw && disableDraw();
+    }
+    else {
+      Object.assign(div_gyro.style, {visibility: 'hidden'});
+    }
+  })
+  draw_check.addEventListener('click', () => {
+    // console.log('click', draw_check.checked)
+    if (draw_check.checked) {
+      copter_check.checked = false;
+      gyro_check.checked = false;
+      disableMotion && disableMotion();
+      enableDraw && enableDraw();
     }
 
-    if (e.shiftKey || copter_check.checked) {
-      y = e.pageY
-      if ( y > copter_max_y ) y = copter_max_y
-      if ( y < copter_min_y ) y = copter_min_y
-      Object.assign(div_copter.style, {top: y})
-    }
+  })
+
+  var move_copter = false;
+  div_tube.addEventListener('mousedown', ()=> {
+    console.log('down');
+    move_copter = true;
+  })
+  div_tube.addEventListener('mouseup'  , ()=> {
+    console.log('up');
+    move_copter = false;
+  })
+  div_tube.addEventListener('mousemove', (e)=> {
+    if (!move_copter) return;
+    y = e.pageY
+    if ( y > copter_max_y ) y = copter_max_y
+    if ( y < copter_min_y ) y = copter_min_y
+    Object.assign(div_copter.style, {top: y})
+  })
+
+  var move_gyro = false;
+  div_rotate_target.addEventListener('mousedown', ()=> {
+    console.log('down');
+    move_gyro = true;
+  })
+  div_rotate_target.addEventListener('mouseup'  , ()=> {
+    console.log('up');
+    move_gyro = false;
+  })
+  div_rotate_target.addEventListener('mousemove', (e)=> {
+    if (!move_gyro) return;
+    x = e.pageX - center_x
+    y = e.pageY - center_y
+    theta = Math.atan2(y, x)
+    Object.assign(div_rotate_target.style, { transform: 'rotate(' + theta * 180 / Math.PI + 'deg)' } )
+  })
+
+  window.enableMotion = () => {
+    Object.assign(div_motion.style, {'z-index': 1});
+  }
+  window.disableMotion = () => {
+    Object.assign(div_motion.style, {'z-index': -1});
   }
 
-  window.addEventListener('mousemove', move);
 })();

@@ -13,6 +13,7 @@
   })();
 
   // Set up the canvas
+  var div_draw = document.getElementById("div-draw")
   var canvas = document.getElementById("canvas-area");
   var pens = document.getElementsByName("pen");
   var current_pen;
@@ -148,5 +149,12 @@
     requestAnimFrame(drawLoop);
     renderCanvas();
   })();
+
+  window.enableDraw = () => {
+    Object.assign(div_draw.style, {'z-index': 1})
+  }
+  window.disableDraw = () => {
+    Object.assign(div_draw.style, {'z-index': -1});
+  }
 
 })();

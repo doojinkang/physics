@@ -4,13 +4,13 @@
 
 <body>
 
-<div class="wrap">
-  <div class="div-motion">
-    <div class="div-monocopter">
+<div id="wrap">
+  <div id="div-motion">
+    <div id="div-monocopter">
       <div id="copter"></div>
       <div id="tube"></div>
     </div>
-    <div class="div-gyro">
+    <div id="div-gyro">
       <div id="circle"></div>
       <div id="hbar"></div>
       <div id="rotate-target">
@@ -18,21 +18,22 @@
         <div id="angle-bar"></div>
       </div>
     </div>
-    <div class="toolbar" style="left:100px">
-      <span class="toolbar-text" > Copter: <input type="checkbox" id="copter-check"/></span>
-      <span class="toolbar-text" > Gyro: <input type="checkbox" id="gyro-check"/></span>
-    </div>
+  </div>
+  <div class="toolbar" style="left:100px">
+    <span class="toolbar-text" > Copter: <input type="checkbox" id="copter-check"/></span>
+    <span class="toolbar-text" > Gyro: <input type="checkbox" id="gyro-check"/></span>
+    <span class="toolbar-text" > Draw: <input type="checkbox" id="draw-check"/></span>
   </div>
 
-  <div class="div-draw">
+  <div id="div-draw">
     <canvas id="canvas-area" width="1090" height="440">
     </canvas>
-    <div class="toolbar" style="left:500px">
-      <button class="toolbar-button" id="clear-button">Clear</button>
-      <span class="toolbar-text" >Pen: <input type="radio" name="pen" value="pen" checked/></span>
-      <span class="toolbar-text" >Red: <input type="radio" name="pen" value="heighlight"/></span>
-      <span class="toolbar-text" >Eraser: <input type="radio" name="pen" value="eraser"/></span>
-    </div>
+  </div>
+  <div class="toolbar" style="left:500px">
+    <button class="toolbar-button" id="clear-button">Clear</button>
+    <span class="toolbar-text" >Pen: <input type="radio" name="pen" value="pen" checked/></span>
+    <span class="toolbar-text" >Red: <input type="radio" name="pen" value="heighlight"/></span>
+    <span class="toolbar-text" >Eraser: <input type="radio" name="pen" value="eraser"/></span>
   </div>
 
 
