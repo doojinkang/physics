@@ -130,6 +130,39 @@
     Object.assign(div_rotate_target.style, { transform: 'rotate(' + theta * 180 / Math.PI + 'deg)' } )
   })
 
+  function eventTouchToMouse(_div) {
+    function getTouchPos(div, touchEvent) {
+      var rect = div.getBoundingClientRect();
+      return {
+        x: touchEvent.touches[0].clientX - rect.left,
+        y: touchEvent.touches[0].clientY - rect.top
+      };
+    }
+    _div.addEventListener("touchstart", function (e) {
+      mousePos = getTouchPos(_div, e);
+      var touch = e.touches[0];
+      var mouseEvent = new MouseEvent("mousedown", {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      });
+      _div.dispatchEvent(mouseEvent);
+    }, false);
+    _div.addEventListener("touchend", function (e) {
+      var mouseEvent = new MouseEvent("mouseup", {});
+      _div.dispatchEvent(mouseEvent);
+    }, false);
+    _div.addEventListener("touchmove", function (e) {
+      var touch = e.touches[0];
+      var mouseEvent = new MouseEvent("mousemove", {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      });
+      _div.dispatchEvent(mouseEvent);
+    }, false);
+  }
+  eventTouchToMouse(div_tube);
+  eventTouchToMouse(div_rotate_target);
+
   window.enableMotion = () => {
     Object.assign(div_motion.style, {'z-index': 1});
   }
