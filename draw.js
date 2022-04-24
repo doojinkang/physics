@@ -14,13 +14,18 @@
 
   // Set up the canvas
   var canvas = document.getElementById("canvas-area");
-  var erase_check = document.getElementById("erase-check");
+  var pens = document.getElementsByName("pen");
+  var current_pen;
+  pens.forEach( (pen) => {
+    pen.addEventListener('change', (e) => {
+      current_pen = e.target.value;
+      console.log("pen:", current_pen);
+    })
+  })
 
   var ctx = canvas.getContext("2d");
   ctx.strokeStyle = "#222222";
   ctx.lineWith = 2;
-
-  var prevChecked = false;
 
   // Set up the UI
   var clearBtn = document.getElementById("clear-button");
@@ -40,7 +45,7 @@
     drawing = false;
   }, false);
   canvas.addEventListener("mousemove", function (e) {
-    if (erase_check.checked) {
+    if (current_pen == 'eraser') {
       // console.log("checked", e);
       var rect = canvas.getBoundingClientRect();
       ctx.fillStyle = "#000000";
@@ -120,11 +125,11 @@
 
   // Draw to the canvas
   function renderCanvas() {
-    // console.log("renderCanvas", drawing, erase_check.checked);
+    // console.log("renderCanvas", drawing, current_pen);
     if (drawing) {
       ctx.moveTo(lastPos.x, lastPos.y);
       ctx.lineTo(mousePos.x, mousePos.y);
-      if (erase_check.checked) {
+      if (current_pen == 'eraser') {
         ctx.fill();      // draw circle : actually erase
       }
       else {
