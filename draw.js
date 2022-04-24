@@ -55,12 +55,19 @@
       ctx.beginPath();        // This prevents miss draw circle when erase_check turns to falsed
       ctx.arc(e.clientX - rect.left, e.clientY - rect.top, 10, 0, 2 * Math.PI, false);
     }
+    else if (current_pen == 'heighlight') {
+      // console.log("not checked");
+      ctx.strokeStyle = "#EE0000";
+      ctx.globalCompositeOperation="source-over";
+      ctx.beginPath();
+      ctx.lineWith = 5;
+    }
     else {
       // console.log("not checked");
       ctx.strokeStyle = "#EEEEEE";
       ctx.globalCompositeOperation="source-over";
       ctx.beginPath();
-      ctx.lineWith = 2;
+      ctx.lineWith = 10;
     }
     mousePos = getMousePos(canvas, e);
   }, false);
