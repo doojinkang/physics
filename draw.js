@@ -60,14 +60,14 @@
       ctx.strokeStyle = "#EE0000";
       ctx.globalCompositeOperation="source-over";
       ctx.beginPath();
-      ctx.lineWith = 5;
+      ctx.lineWidth = 3;
     }
     else {
       // console.log("not checked");
       ctx.strokeStyle = "#EEEEEE";
       ctx.globalCompositeOperation="source-over";
       ctx.beginPath();
-      ctx.lineWith = 10;
+      ctx.lineWidth = 3;
     }
     mousePos = getMousePos(canvas, e);
   }, false);
