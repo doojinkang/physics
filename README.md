@@ -17,4 +17,6 @@
 - currently support black, red pen and eraser.
 - When copter or angular enabled touch is disabled.
 
-
+# Note
+- Screen is optimized in Samsung S6 lite tablet chrome browser
+- will update for other tablet
