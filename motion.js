@@ -71,7 +71,7 @@
     else {
       Object.assign(div_monocopter.style, {visibility: 'hidden'});
     }
-  })
+  }, false)
   gyro_check.addEventListener('click', () => {
     // console.log('click', gyro_check.checked)
     if (gyro_check.checked) {
@@ -84,7 +84,7 @@
     else {
       Object.assign(div_gyro.style, {visibility: 'hidden'});
     }
-  })
+  }, false)
   draw_check.addEventListener('click', () => {
     // console.log('click', draw_check.checked)
     if (draw_check.checked) {
@@ -94,41 +94,41 @@
       enableDraw && enableDraw();
     }
 
-  })
+  }, false)
 
   var move_copter = false;
   div_tube.addEventListener('mousedown', ()=> {
     console.log('down');
     move_copter = true;
-  })
+  }, false)
   div_tube.addEventListener('mouseup'  , ()=> {
     console.log('up');
     move_copter = false;
-  })
+  }, false)
   div_tube.addEventListener('mousemove', (e)=> {
     if (!move_copter) return;
     y = e.pageY
     if ( y > copter_max_y ) y = copter_max_y
     if ( y < copter_min_y ) y = copter_min_y
     Object.assign(div_copter.style, {top: y})
-  })
+  }, false)
 
   var move_gyro = false;
   div_rotate_target.addEventListener('mousedown', ()=> {
     console.log('down');
     move_gyro = true;
-  })
+  }, false)
   div_rotate_target.addEventListener('mouseup'  , ()=> {
     console.log('up');
     move_gyro = false;
-  })
+  }, false)
   div_rotate_target.addEventListener('mousemove', (e)=> {
     if (!move_gyro) return;
     x = e.pageX - center_x
     y = e.pageY - center_y
     theta = Math.atan2(y, x)
     Object.assign(div_rotate_target.style, { transform: 'rotate(' + theta * 180 / Math.PI + 'deg)' } )
-  })
+  }, false)
 
   function eventTouchToMouse(_div) {
     function getTouchPos(div, touchEvent) {

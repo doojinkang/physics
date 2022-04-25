@@ -20,7 +20,7 @@ body {
 
 /* --------- Drawing Area ------------ */
 #div-draw { position: absolute; width:1090px; height:440px; }
-    #canvas-area { cursor: pointer; }
+    #canvas-area { cursor: crosshair; }
 
 /* --------- Motion Area ------------ */
 #div-motion { position: absolute; width: 1090px; height: 440px; }

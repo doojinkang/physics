@@ -21,7 +21,7 @@
     pen.addEventListener('change', (e) => {
       current_pen = e.target.value;
       console.log("pen:", current_pen);
-    })
+    }, false)
   })
 
   var ctx = canvas.getContext("2d");
@@ -81,6 +81,7 @@
       };
     }
     _div.addEventListener("touchstart", function (e) {
+      e.preventDefault();
       mousePos = getTouchPos(_div, e);
       var touch = e.touches[0];
       var mouseEvent = new MouseEvent("mousedown", {
